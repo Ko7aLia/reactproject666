@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+body{
+
+    margin: 0;
+    padding: 10px;
+
+    background: rgb(6, 12, 19)
+        
+        url('assets/light.svg') no-repeat ;
+
+    background-position-x: center;
+
+    box-shadow: inset 0 -20px 70px rgba(9, 58, 32, 0.4);
+    
+}
