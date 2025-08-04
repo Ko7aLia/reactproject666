@@ -9,7 +9,7 @@ function MainForm() {
                     <p className='font-normal'>Возврат бонусов</p>
 
                     
-                <form className='grid-cols-[120px_328px] mt-2 grid gap-3 text-white'>
+                <form className='mt-2 grid grid-cols-[116px_328px] gap-3 text-white'>
 
                     <button className='box flex h-[60px] items-center justify-center'>
 
@@ -47,10 +47,9 @@ function MainForm() {
 
                         <input placeholder="Номер кошелька" className='box h-[60px] w-full p-2 pr-16' />
 
-                        
-                        
+                       
 
-                        <button className='absolute right-2 top-2 flex h-[44px] w-[44px] items-center justify-center rounded-xl bg-emerald-500'>
+                        <button className='absolute top-2 right-2 flex h-[44px] w-[44px] items-center justify-center rounded-xl bg-emerald-500'>
 
                                 <img src={send} className='h-4 w-4' alt="send" />
 

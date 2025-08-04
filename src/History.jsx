@@ -4,37 +4,37 @@ import dollar from './assets/dollar.svg'
 function History() {
   return (
       <>
-        <section aria-label="История операций" className='grid place-items-center'>
+            <p className='mt-10 flex justify-center text-white'>История</p>
 
-            <p className='mt-10 text-white'>История</p>
+        <div className='place-items-center'>
 
-            <div className='max-w-170 mb-4 mt-2 grid grid-cols-3 gap-3'>
+              <div className='mt-2 mb-4 flex flex-row gap-x-3'>
 
-                 <div className='box min-w-50 min-h-27 flex p-3'>
+                 <div className='box h-[118px] w-[220px] p-3'>
 
-                      <div className='box flex max-h-10 min-w-10 items-center justify-center'>
+                      <div className='box flex h-[40px] w-[40px] items-center justify-center'>
 
-                          <img src={ethereum} className='max-h-6 min-h-6 min-w-6 max-w-6' alt="ethereum" />
-
-                      </div>
-
-                 </div>
-
-                 <div className='box min-w-50 min-h-27 flex p-3'>
-
-                      <div className='box flex max-h-10 min-w-10 items-center justify-center'>
-
-                          <img src={bitcoin} className='max-h-6 min-h-6 min-w-6 max-w-6' alt="bitcoin" />
+                          <img src={ethereum} className='h-[24px] w-[24px]' alt="ethereum" />
 
                       </div>
 
                  </div>
 
-                 <div className='box min-w-50 min-h-27 flex p-3'>
+                 <div className='box h-[118px] w-[220px] p-3'>
 
-                      <div className='box flex max-h-10 min-w-10 items-center justify-center'>
+                      <div className='box flex h-[40px] w-[40px] items-center justify-center'>
 
-                          <img src={dollar} className='max-h-6 min-h-6 min-w-6 max-w-6' alt="dollar" />
+                          <img src={bitcoin} className='h-[24px] w-[24px]' alt="bitcoin" />
+
+                      </div>
+
+                 </div>
+
+                 <div className='box h-[118px] w-[220px] p-3'>
+
+                      <div className='box flex h-[40px] w-[40px] items-center justify-center'>
+
+                          <img src={dollar} className='h-[24px] w-[24px]' alt="dollar" />
 
                       </div>
 
@@ -42,7 +42,7 @@ function History() {
 
             </div>
 
-        </section>
+        </div>
     </>
   );
 }
