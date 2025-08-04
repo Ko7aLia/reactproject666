@@ -9,7 +9,7 @@ function MainForm() {
                     <p className='font-normal'>Возврат бонусов</p>
 
                     
-                <form className='mt-2 grid grid-cols-[116px_328px] gap-3 text-white'>
+                <form className='mt-2 grid grid-cols-[116px_232px] gap-3 text-white md:grid-cols-[116px_328px]'>
 
                     <button className='box flex h-[60px] items-center justify-center'>
 
@@ -36,7 +36,7 @@ function MainForm() {
 
                     
 
-                    <span className='inline-block pl-2 text-xs text-stone-400'>
+                    <span className='inline-block pl-2 text-center text-xs text-stone-400'>
 
                      Комиссия будет расчитана после конечной суммы
                      </span>
