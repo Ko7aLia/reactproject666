@@ -8,7 +8,7 @@ function History() {
 
         <div className='place-items-center'>
 
-              <div className='mt-2 mb-4 flex flex-row gap-x-3'>
+              <div className='mt-2 mb-[31px] flex flex-row gap-x-3 md:mb-[83px]'>
 
                  <div className='box h-[118px] w-[220px] p-3'>
 
