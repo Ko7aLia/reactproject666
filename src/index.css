@@ -1,6 +1,14 @@
-@import "tailwindcss";
+﻿@import "tailwindcss";
 
-body{
+body {
+   
+    @apply bg-[rgb(6,_12,_19)] bg-[url('assets/light.svg')] bg-top bg-no-repeat p-[20px] inset-shadow-[0px_-20px_70px_rgba(9,_58,_32,_0.4)] select-none;
+}
+
+
+/*
+
+    body{
 
     margin: 0;
     padding: 20px;
@@ -12,6 +20,9 @@ body{
     background-position-x: center;
 
     box-shadow: inset 0 -20px 70px rgba(9, 58, 32, 0.4);
-    
-}
 
+    user-select: none;
+    
+    }
+
+*/
