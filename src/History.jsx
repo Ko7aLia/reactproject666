@@ -90,7 +90,7 @@ function History() {
         <div 
             ref={parentRef}
             
-            className="overflow-hidden relative mt-2 mb-[31px] h-[118px] md:mb-[83px]">
+            className="relative mt-2 mb-[31px] h-[118px] md:mb-[83px]">
 
            
            
