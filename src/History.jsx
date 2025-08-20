@@ -57,7 +57,7 @@ function History() {
                 const minPosition = 0;
                 const maxPosition = parentRect.width - draggableRect.width;
 
-                if (newPosition >= minPosition && newPosition <= maxPosition) {
+                if (newPosition >= minPosition) {
                     setPosition(newPosition);
                 };
             };
