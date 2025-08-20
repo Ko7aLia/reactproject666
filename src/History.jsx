@@ -17,8 +17,8 @@ function History() {
     const draggableRef = useRef(null);
 
     ////центральная позиция перетаскиваемого элемента внутри родительского
-    useEffect(() => {
-        if (window.innerWidth > 1024) { 
+    const calculateInitialPosition = () => {
+        if (window.innerWidth > 800) { 
             if (parentRef.current && draggableRef.current) {
                 const parentWidth = parentRef.current.clientWidth;
                 const draggableWidth = draggableRef.current.clientWidth;
@@ -27,7 +27,18 @@ function History() {
                 setPosition(initialPosition);
             }
         }
+    };
+    // выравнивание блока истории по мере уменьшения окна
+    useEffect(() => {
+        calculateInitialPosition();
+        window.addEventListener('resize', calculateInitialPosition); 
+
+        return () => {
+            window.removeEventListener('resize', calculateInitialPosition);
+        };
     }, []);
+
+
     //отслеживание изменения позиции курсора, установка перетаскивания
     const handleMouseDown = (event) => {
         const currentOffset = event.clientX - position;
@@ -79,7 +90,7 @@ function History() {
         <div 
             ref={parentRef}
             
-            className="relative mt-2 mb-[31px] h-[118px] md:mb-[83px]">
+            className="overflow-hidden relative mt-2 mb-[31px] h-[118px] md:mb-[83px]">
 
            
            
