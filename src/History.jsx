@@ -16,14 +16,16 @@ function History() {
     const parentRef = useRef(null);
     const draggableRef = useRef(null);
 
-    //центральная позиция перетаскиваемого элемента внутри родительского
+    ////центральная позиция перетаскиваемого элемента внутри родительского
     useEffect(() => {
-        if (parentRef.current && draggableRef.current) {
-            const parentWidth = parentRef.current.clientWidth;
-            const draggableWidth = draggableRef.current.clientWidth;
-            const initialPosition = (parentWidth - draggableWidth) / 2;
-            console.log(parentWidth, draggableWidth, initialPosition);
-            setPosition(initialPosition);
+        if (window.innerWidth > 1024) { 
+            if (parentRef.current && draggableRef.current) {
+                const parentWidth = parentRef.current.clientWidth;
+                const draggableWidth = draggableRef.current.clientWidth;
+                const initialPosition = (parentWidth - draggableWidth) / 2;
+                console.log(parentWidth, draggableWidth, initialPosition);
+                setPosition(initialPosition);
+            }
         }
     }, []);
     //отслеживание изменения позиции курсора, установка перетаскивания
@@ -77,7 +79,7 @@ function History() {
         <div 
             ref={parentRef}
             
-            className="relative mt-2 mb-[31px] h-[118px] place-items-center md:mb-[83px]">
+            className="relative mt-2 mb-[31px] h-[118px] md:mb-[83px]">
 
            
            
@@ -88,7 +90,7 @@ function History() {
                       left: position,
                   }}
 
-                  className="overflow-hidden absolute cursor-grab flex flex-row gap-x-3"
+                  className="absolute cursor-grab flex flex-row gap-x-3"
               >
 
                              <div className="box h-[118px] w-[220px] p-3">
