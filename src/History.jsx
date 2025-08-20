@@ -88,7 +88,7 @@ function History() {
                       left: position,
                   }}
 
-                  className="absolute cursor-grab flex flex-row gap-x-3"
+                  className="overflow-hidden absolute cursor-grab flex flex-row gap-x-3"
               >
 
                              <div className="box h-[118px] w-[220px] p-3">
