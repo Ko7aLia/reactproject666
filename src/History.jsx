@@ -25,6 +25,8 @@ function History() {
                 const initialPosition = (parentWidth - draggableWidth) / 2;
                 console.log(parentWidth, draggableWidth, initialPosition);
                 setPosition(initialPosition);
+            } else {
+            setPosition(0); // На мобильных устройствах начнем с позиции 0
             }
         }
     };
@@ -45,6 +47,14 @@ function History() {
         setOffset(currentOffset);
         setDragging(true);
     };
+
+    const handleTouchStart = (event) => {
+        const touch = event.touches[0];
+        const currentOffset = touch.clientX - position;
+        setOffset(currentOffset);
+        setDragging(true);
+    };
+
     //движение блока истории внутри родительского блока
     const handleMouseMove = (event) => {
         if (dragging) {
@@ -63,8 +73,21 @@ function History() {
             };
         };
     };
+
+    const handleTouchMove = (event) => {
+        if (dragging) {
+            const touch = event.touches[0];
+            const newPosition = touch.clientX - offset;
+            setPosition(newPosition);
+        }
+    };
+
     // остановка расчета позиции блока истории относительно курсора
     const handleMouseUp = () => {
+        setDragging(false);
+    };
+
+    const handleTouchEnd = () => {
         setDragging(false);
     };
 
@@ -89,7 +112,8 @@ function History() {
 
         <div 
             ref={parentRef}
-            
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
             className="relative mt-2 mb-[31px] h-[118px] md:mb-[83px]">
 
            
@@ -97,6 +121,7 @@ function History() {
               <div
                   ref={draggableRef}
                   onMouseDown={handleMouseDown}
+                  onTouchStart={handleTouchStart}
                   style={{ 
                       left: position,
                   }}
