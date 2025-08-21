@@ -27,8 +27,8 @@ function History() {
                 setPosition(initialPosition);
             } else {
             setPosition(0); // На мобильных устройствах начнем с позиции 0
-            }
-        }
+            };
+        };
     };
     // выравнивание блока истории по мере уменьшения окна
     useEffect(() => {
@@ -63,11 +63,16 @@ function History() {
                 const parentRect = parentRef.current.getBoundingClientRect();
                 const draggableRect = draggableRef.current.getBoundingClientRect();
 
+                
                 // Ограничение перемещения div в пределах родителя
                 const minPosition = 0;
                 const maxPosition = parentRect.width - draggableRect.width;
-
-                if (newPosition >= minPosition) {
+                
+                if (window.innerWidth > 800) {
+                        if (newPosition >= minPosition && newPosition <= maxPosition) {
+                            setPosition(newPosition);
+                        };
+                }else{
                     setPosition(newPosition);
                 };
             };
