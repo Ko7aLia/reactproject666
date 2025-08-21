@@ -2,7 +2,7 @@
 
 body {
 
-    @apply overflow-x-hidden relative bg-size-[800px] md:bg-size-[100%] bg-[rgb(6,_12,_19)] bg-[url('assets/light.svg')] bg-top bg-no-repeat p-[20px] inset-shadow-[0px_-20px_70px_rgba(9,_58,_32,_0.4)] select-none;
+    @apply w-full overflow-x-hidden relative bg-size-[800px] md:bg-size-[100%] bg-[rgb(6,_12,_19)] bg-[url('assets/light.svg')] bg-top bg-no-repeat p-[20px] inset-shadow-[0px_-20px_70px_rgba(9,_58,_32,_0.4)] select-none;
 }
 
 html {
