@@ -25,11 +25,13 @@ function History() {
                 const initialPosition = (parentWidth - draggableWidth) / 2;
                 console.log(parentWidth, draggableWidth, initialPosition);
                 setPosition(initialPosition);
-            } else {
-            setPosition(0); // На мобильных устройствах начнем с позиции 0
             };
+        } else {
+            setPosition(0); // На мобильных устройствах начнем с позиции 0
         };
+        
     };
+    
     // выравнивание блока истории по мере уменьшения окна
     useEffect(() => {
         calculateInitialPosition();
