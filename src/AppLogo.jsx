@@ -8,7 +8,7 @@ function MainLogo() {
   return (
     <>
 
-      <header className="place-items-center text-white">
+      <header className="adapt flex flex-col text-white">
 
               <DragSvgLock>
                       <img src={mainLogo} className="mt-[20px] mb-[40px] md:mb-[108px]" alt="Main logo" />
