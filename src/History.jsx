@@ -18,18 +18,19 @@ function History() {
 
     ////центральная позиция перетаскиваемого элемента внутри родительского
     const calculateInitialPosition = () => {
-        if (window.innerWidth > 800) { 
-            if (parentRef.current && draggableRef.current) {
-                const parentWidth = parentRef.current.clientWidth;
-                const draggableWidth = draggableRef.current.clientWidth;
-                const initialPosition = (parentWidth - draggableWidth) / 2;
-                console.log(parentWidth, draggableWidth, initialPosition);
-                setPosition(initialPosition);
+        if (!hasBeenDragged) { // Проверяем, не перемещался ли элемент
+            if (window.innerWidth > 800) { 
+                if (parentRef.current && draggableRef.current) {
+                    const parentWidth = parentRef.current.clientWidth;
+                    const draggableWidth = draggableRef.current.clientWidth;
+                    const initialPosition = (parentWidth - draggableWidth) / 2;
+                    console.log(parentWidth, draggableWidth, initialPosition);
+                    setPosition(initialPosition);
+                };
+            } else {
+                setPosition(0); // На мобильных устройствах начнем с позиции 0
             };
-        } else {
-            setPosition(0); // На мобильных устройствах начнем с позиции 0
         };
-        
     };
     
     // выравнивание блока истории по мере уменьшения окна
@@ -40,7 +41,7 @@ function History() {
         return () => {
             window.removeEventListener('resize', calculateInitialPosition);
         };
-    }, []);
+    }, [hasBeenDragged]); // Обновляйте эффект при изменении вашего нового состояния
 
 
     //отслеживание изменения позиции курсора, установка перетаскивания
@@ -83,7 +84,7 @@ function History() {
 
     const handleTouchMove = (event) => {
         if (dragging) {
-            
+            const touch = event.touches[0];
             const newPosition = touch.clientX - offset;
             setPosition(newPosition);
         }
@@ -96,6 +97,7 @@ function History() {
 
     const handleTouchEnd = () => {
         setDragging(false);
+        setHasBeenDragged(true); // Элемент взаимодействовал
     };
 
     React.useEffect(() => {
