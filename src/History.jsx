@@ -83,7 +83,7 @@ function History() {
 
     const handleTouchMove = (event) => {
         if (dragging) {
-            const touch = event.touches[0];
+            
             const newPosition = touch.clientX - offset;
             setPosition(newPosition);
         }
