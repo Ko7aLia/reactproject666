@@ -16,6 +16,8 @@ function History() {
     const parentRef = useRef(null);
     const draggableRef = useRef(null);
 
+    const [hasBeenDragged, setHasBeenDragged] = useState(false);
+
     ////центральная позиция перетаскиваемого элемента внутри родительского
     const calculateInitialPosition = () => {
         if (!hasBeenDragged) { // Проверяем, не перемещался ли элемент
