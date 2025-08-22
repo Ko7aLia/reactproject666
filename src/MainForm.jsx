@@ -12,7 +12,7 @@ function MainForm() {
                     <p className="adapt flex flex-col font-normal">Возврат бонусов</p>
 
                     
-                <form className="mt-2 grid grid-cols-[116px_237px] gap-3 text-white md:grid-cols-[116px_328px]">
+                <form className="mt-2 grid grid-cols-[116px_240px] gap-3 text-white md:grid-cols-[116px_328px]">
 
                     <button className="box flex h-[60px] items-center justify-center">
 
