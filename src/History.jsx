@@ -1,6 +1,6 @@
 ﻿import ethereum from './assets/ethereum.svg';
 import bitcoin from './assets/bitcoin.svg';
-import dollar from './assets/dollar.svg';
+import USD from './assets/usd.svg';
 //import useMousePosition from './HistoryDraggable';
 
 import React, { useState, useEffect, useRef } from 'react';
@@ -140,9 +140,9 @@ function History() {
                   className="absolute cursor-grab flex flex-row gap-x-3"
               >
 
-                             <div className="box h-[118px] w-[220px] p-3">
+                             <div className="custom_box h-[118px] w-[220px] p-3">
 
-                                  <div className="box flex h-[40px] w-[40px] items-center justify-center">
+                                  <div className="custom_box flex h-[40px] w-[40px] items-center justify-center">
                                     <DragSvgLock>
                                         <img src={ethereum} className="h-[24px] w-[24px]" alt="ethereum" />
                                     </DragSvgLock>
@@ -151,9 +151,9 @@ function History() {
 
                              </div>
 
-                             <div className="box h-[118px] w-[220px] p-3">
+                             <div className="custom_box h-[118px] w-[220px] p-3">
 
-                                  <div className="box flex h-[40px] w-[40px] items-center justify-center">
+                                  <div className="custom_box flex h-[40px] w-[40px] items-center justify-center">
                                     <DragSvgLock>
                                       <img src={bitcoin} className="h-[24px] w-[24px]" alt="bitcoin" />
                                     </DragSvgLock>
@@ -162,11 +162,11 @@ function History() {
 
                              </div>
 
-                             <div className="box h-[118px] w-[220px] p-3">
+                             <div className="custom_box h-[118px] w-[220px] p-3">
 
-                                  <div className="box flex h-[40px] w-[40px] items-center justify-center">
+                                  <div className="custom_box flex h-[40px] w-[40px] items-center justify-center">
                                     <DragSvgLock>
-                                      <img src={dollar} className="h-[24px] w-[24px]" alt="dollar" />
+                                      <img src={USD} className="h-[24px] w-[24px]" alt="dollar" />
                                     </DragSvgLock>
 
                                   </div>

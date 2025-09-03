@@ -1,8 +1,36 @@
 ﻿@import "tailwindcss";
 
-.box{
 
-    @apply bg-[linear-gradient(rgb(38,_38,_38),_rgb(64,_64,_64))] rounded-[10px] border border-[1px] border-[rgb(84,_84,_84)];
+
+.custom_box{
+
+  @apply bg-[linear-gradient(rgb(38,_38,_38),_rgb(64,_64,_64))] rounded-[10px] border-[1px] border-[rgb(84,_84,_84)];
+}
+
+.custom_hover:hover{
+
+  @apply border-black;
+
+}
+
+.custom_box:focus{
+
+  @apply outline-none border-[rgb(84,_84,_84)];
+
+}
+
+.custom_box:focus:hover{
+
+  @apply outline-none border-[rgb(128,_128,_128)];
+
+}
+
+.my-select__indicators {
+  transition: transform 0.3s ease-in-out;
+}
+
+.my-select__control--menu-is-open .my-select__indicators {
+  transform: rotate(180deg);
 }
 
 /*
