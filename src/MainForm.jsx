@@ -197,7 +197,7 @@ function MainForm() {
 
                     
                         
-                        
+                    <div>    
                         
                         < Select    isSearchable={false}
                                     options={options} //список вариантов значений
@@ -212,7 +212,7 @@ function MainForm() {
                                                   IndicatorSeparator: () => null, //IndicatorSeparator: () => null - обнуление вертикального разделителя
                                                    }}  
                         />
-                     
+                    </div>
                     
 
                     <div>
