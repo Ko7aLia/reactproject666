@@ -1,4 +1,5 @@
-﻿import DragSvgLock from './DragSvgLock.jsx'
+﻿import DragSvgLock from '../../components/DragSvgLock/DragSvgLock.jsx'
+
 function footer() {
     return (
         <>

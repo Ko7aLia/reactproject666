@@ -1,11 +1,13 @@
-﻿import ethereum from './assets/ethereum.svg';
-import bitcoin from './assets/bitcoin.svg';
-import USD from './assets/usd.svg';
+﻿import eth from '../../assets/ethereum.svg';
+import btc from '../../assets/bitcoin.svg';
+import usd from '../../assets/dollar.svg';
+import waiting from '../../assets/waiting.svg';
+import HistoryBoxes from './HistoryBoxes.jsx';
 //import useMousePosition from './HistoryDraggable';
 
 import React, { useState, useEffect, useRef } from 'react';
 
-import DragSvgLock from './DragSvgLock.jsx'
+import DragSvgLock from '../../components/DragSvgLock/DragSvgLock.jsx'
 
 function History() {
 
@@ -156,7 +158,7 @@ function History() {
 
   return (
       <>
-            <p className="mt-10 flex justify-center text-white">История</p>
+            <p className="mt-10 flex justify-center text-white opacity-[80%]">История</p>
 
         <div 
             ref={parentRef}
@@ -174,41 +176,72 @@ function History() {
                       left: position,
                   }}
 
-                  className="absolute cursor-grab flex flex-row gap-x-3"
+                  className="text-white absolute cursor-grab flex flex-row gap-x-3"
               >
 
-                             <div className="custom_box h-[118px] w-[220px] p-3">
+                            <div className="custom_box h-[118px] w-[220px] p-[12px]">
 
-                                  <div className="custom_box flex h-[40px] w-[40px] items-center justify-center">
-                                    <DragSvgLock>
-                                        <img src={ethereum} className="h-[24px] w-[24px]" alt="ethereum" />
-                                    </DragSvgLock>
+                                <div className="flex gap-[8px] h-[62px] w-[196px]">
 
-                                  </div>
+                                    <div className="custom_box flex h-[40px] w-[40px] items-center justify-center">
+                                      <DragSvgLock>
+                                          <img src={eth} className="h-[24px] w-[24px]" alt="eth" />
+                                      </DragSvgLock>
 
-                             </div>
+                                    </div>
 
-                             <div className="custom_box h-[118px] w-[220px] p-3">
+                                        <div className="flex flex-col h-[62px] w-[148px]">
 
-                                  <div className="custom_box flex h-[40px] w-[40px] items-center justify-center">
-                                    <DragSvgLock>
-                                      <img src={bitcoin} className="h-[24px] w-[24px]" alt="bitcoin" />
-                                    </DragSvgLock>
+                                            <div className="flex gap-[4px] h-[20px]"> 
+                                                <p className="font-bold text-[16px]">0.000399</p> <p className="mt-[6px] font-normal text-[10px] opacity-[40%]">ETH</p>
 
-                                  </div>
+                                            </div>
 
-                             </div>
+                                            <p className="opacity-[30%] mt-[3px] h-auto leading-[11px] font-normal text-[10px] col-span-2 break-all">drdrz444xcsdf99w554efvfgerwqsacx4zcsdcdvbdf8bdx</p>
+                                            <p className="font-normal mt-[1px] text-[12px] col-span-2 h-[14px]">29.03.2025</p>
 
-                             <div className="custom_box h-[118px] w-[220px] p-3">
+                                        </div>
 
-                                  <div className="custom_box flex h-[40px] w-[40px] items-center justify-center">
-                                    <DragSvgLock>
-                                      <img src={USD} className="h-[24px] w-[24px]" alt="dollar" />
-                                    </DragSvgLock>
+                                </div>
+                                <div className="flex gap-[8px] items-center mt-[10px] h-[20px] w-[196px]">
+                                    <div className="flex custom_box items-center justify-center ml-[5px] h-[23px] w-[35px]"><p className="font-normal text-[10px]">14:25</p></div> <p className="font-normal text-[10px] text-[rgb(255,_187,_0)]">Ожидает отправки</p>
+                                    
+                                </div>
 
-                                  </div>
+                            </div>
 
-                             </div>
+                             <div className="custom_box h-[118px] w-[220px] p-[12px]">
+
+                                <div className="flex gap-[8px] h-[62px] w-[196px]">
+
+                                    <div className="custom_box flex h-[40px] w-[40px] items-center justify-center">
+                                      <DragSvgLock>
+                                          <img src={btc} className="h-[24px] w-[24px]" alt="btc" />
+                                      </DragSvgLock>
+
+                                    </div>
+
+                                        <div className="flex flex-col h-[62px] w-[148px]">
+
+                                            <div className="flex gap-[4px] h-[20px]"> 
+                                                <p className="font-bold text-[16px]">0.000000059</p> <p className="mt-[6px] font-normal text-[10px] opacity-[40%]">BTC</p>
+
+                                            </div>
+
+                                            <p className="opacity-[30%] mt-[3px] h-auto leading-[11px] font-normal text-[10px] col-span-2 break-all">drdrz444xcsdf99w554efvfgerwqsacx4zcsdcdvbdf8bdx</p>
+                                            <p className="font-normal mt-[1px] text-[12px] col-span-2 h-[14px]">29.03.2025</p>
+
+                                        </div>
+
+                                </div>
+                                <div className="flex gap-[8px] items-center mt-[10px] h-[20px] w-[196px]">
+                                    <div className="flex custom_box items-center justify-center ml-[5px] h-[23px] w-[35px]"><img src={waiting} alt="waiting"></img></div> <p className="font-normal text-[10px] text-[rgb(255,_187,_0)]">Ожидает подтверждения</p>
+                                    
+                                </div>
+
+                            </div>
+
+                            <HistoryBoxes />
 
               </div>
 

@@ -13,13 +13,13 @@
 
 }
 
-.custom_box:focus{
+.custom_hover:focus{
 
   @apply outline-none border-[rgb(84,_84,_84)];
 
 }
 
-.custom_box:focus:hover{
+.custom_hover:focus:hover{
 
   @apply outline-none border-[rgb(128,_128,_128)];
 
@@ -32,6 +32,13 @@
 .my-select__control--menu-is-open .my-select__indicators {
   transform: rotate(180deg);
 }
+
+.custom_send_button_hover:hover{
+
+  @apply bg-[rgb(97,54,251)] transition ease-in-out rotate-360 duration-1000;
+}
+
+
 
 /*
     min-h-15 border-1 max-w-30 min-w-25 rounded-xl border-solid border-gray-600 bg-gradient-to-b from-neutral-800 to-neutral-700
