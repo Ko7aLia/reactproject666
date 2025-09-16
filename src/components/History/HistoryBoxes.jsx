@@ -5,11 +5,11 @@ import accept from '../../assets/accept.svg';
 const HistoryBoxes = () => {
     
     return (
-        <div className="custom_box h-[118px] w-[220px] p-[12px]">
+        <div className="custom-box h-[118px] w-[220px] p-[12px]">
         
             <div className="flex gap-[8px] h-[62px] w-[196px]">
 
-                <div className="custom_box flex h-[40px] w-[40px] items-center justify-center">
+                <div className="custom-box flex h-[40px] w-[40px] items-center justify-center">
                   <DragSvgLock>
                       <img src={usdt} className="h-[24px] w-[24px]" alt="usdt" />
                   </DragSvgLock>
@@ -32,7 +32,7 @@ const HistoryBoxes = () => {
 
             <div className="flex gap-[8px] items-center mt-[10px] h-[20px] w-[196px]">
                 
-                <div className="flex custom_box items-center justify-center ml-[5px] h-[23px] w-[35px]"><img src={accept}></img></div> <p className="font-normal text-[10px] text-[rgb(58,_198,_125)]">Транзакция завершена</p>
+                <div className="flex custom-box items-center justify-center ml-[5px] h-[23px] w-[35px]"><img src={accept}></img></div> <p className="font-normal text-[10px] text-[rgb(58,_198,_125)]">Транзакция завершена</p>
                 
             </div>
         

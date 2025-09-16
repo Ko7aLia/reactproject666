@@ -77,7 +77,7 @@ function History() {
                 // Ограничение перемещения div в пределах родителя
                 const minPosition = 0;
                 const maxPosition = parentRect.width - draggableRect.width;
-                const draggableRectStartOrEnd = draggableRect.width * (2/3) + 20; // ограничение движения блока, чтобы на экране всегда был первый/последний блок при перемещении вправо/влево окна соответственно
+                //const draggableRectStartOrEnd = draggableRect.width; // ограничение движения блока, чтобы на экране всегда был первый/последний блок при перемещении вправо/влево окна соответственно
                 
                 if (window.innerWidth > 800) {
 
@@ -87,10 +87,12 @@ function History() {
 
                 }else{
 
-                    if (newPosition >= minPosition - draggableRectStartOrEnd && newPosition <= maxPosition + draggableRectStartOrEnd) {
-                        //console.log(newPosition, draggableRect.width, draggableRectStartOrEnd);
+                    if (newPosition <= minPosition && newPosition >= maxPosition) {
+                        
                         setPosition(newPosition);
                     };
+
+                  
 
                 };
             };
@@ -179,11 +181,11 @@ function History() {
                   className="text-white absolute cursor-grab flex flex-row gap-x-3"
               >
 
-                            <div className="custom_box h-[118px] w-[220px] p-[12px]">
+                            <div className="custom-box h-[118px] w-[220px] p-[12px]">
 
                                 <div className="flex gap-[8px] h-[62px] w-[196px]">
 
-                                    <div className="custom_box flex h-[40px] w-[40px] items-center justify-center">
+                                    <div className="custom-box flex h-[40px] w-[40px] items-center justify-center">
                                       <DragSvgLock>
                                           <img src={eth} className="h-[24px] w-[24px]" alt="eth" />
                                       </DragSvgLock>
@@ -204,17 +206,17 @@ function History() {
 
                                 </div>
                                 <div className="flex gap-[8px] items-center mt-[10px] h-[20px] w-[196px]">
-                                    <div className="flex custom_box items-center justify-center ml-[5px] h-[23px] w-[35px]"><p className="font-normal text-[10px]">14:25</p></div> <p className="font-normal text-[10px] text-[rgb(255,_187,_0)]">Ожидает отправки</p>
+                                    <div className="flex custom-box items-center justify-center ml-[5px] h-[23px] w-[35px]"><p className="font-normal text-[10px]">14:25</p></div> <p className="font-normal text-[10px] text-[rgb(255,_187,_0)]">Ожидает отправки</p>
                                     
                                 </div>
 
                             </div>
 
-                             <div className="custom_box h-[118px] w-[220px] p-[12px]">
+                             <div className="custom-box h-[118px] w-[220px] p-[12px]">
 
                                 <div className="flex gap-[8px] h-[62px] w-[196px]">
 
-                                    <div className="custom_box flex h-[40px] w-[40px] items-center justify-center">
+                                    <div className="custom-box flex h-[40px] w-[40px] items-center justify-center">
                                       <DragSvgLock>
                                           <img src={btc} className="h-[24px] w-[24px]" alt="btc" />
                                       </DragSvgLock>
@@ -235,7 +237,7 @@ function History() {
 
                                 </div>
                                 <div className="flex gap-[8px] items-center mt-[10px] h-[20px] w-[196px]">
-                                    <div className="flex custom_box items-center justify-center ml-[5px] h-[23px] w-[35px]"><img src={waiting} alt="waiting"></img></div> <p className="font-normal text-[10px] text-[rgb(255,_187,_0)]">Ожидает подтверждения</p>
+                                    <div className="flex custom-box items-center justify-center ml-[5px] h-[23px] w-[35px]"><img src={waiting} alt="waiting"></img></div> <p className="font-normal text-[10px] text-[rgb(255,_187,_0)]">Ожидает подтверждения</p>
                                     
                                 </div>
 

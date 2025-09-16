@@ -1,22 +1,18 @@
 import React from 'react';
+const bonusesData = 10000;
 
-const Bonuses = ({ arrayName }) => {
-  const bonusesData = {
-    bonusArray1: [10000] 
-  };
 
-  const bonus = bonusesData[arrayName];
+const Bonuses = () => {
+  
+
+  const bonus = bonusesData;
+  
 
   return (
     <div>
-      {bonus !== undefined ? (
-        <div>{bonus.map((bonus, index) => (
-            // Используем `toLocaleString` для форматирования числа с пробелами
-            <p key={index}>{bonus.toLocaleString('ru-RU')}</p>
-          ))}</div>
-      ) : (
-        <p>Указанный массив не найден.</p>
-      )}
+            {/* Используем `toLocaleString` для форматирования числа с пробелами */}
+            <p>{bonus.toLocaleString('ru-RU')}</p>
+          
     </div>
   );
 };

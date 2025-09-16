@@ -1,25 +1,18 @@
 ﻿@import "tailwindcss";
 
-
-
-.custom_box{
-
-  @apply bg-[linear-gradient(rgb(38,_38,_38),_rgb(64,_64,_64))] rounded-[10px] border-[1px] border-[rgb(84,_84,_84)];
-}
-
-.custom_hover:hover{
+.custom-hover:hover{
 
   @apply border-black;
 
 }
 
-.custom_hover:focus{
+.custom-hover:focus{
 
   @apply outline-none border-[rgb(84,_84,_84)];
 
 }
 
-.custom_hover:focus:hover{
+.custom-hover:focus:hover{
 
   @apply outline-none border-[rgb(128,_128,_128)];
 
@@ -33,7 +26,7 @@
   transform: rotate(180deg);
 }
 
-.custom_send_button_hover:hover{
+.custom-send-button-hover:hover{
 
   @apply bg-[rgb(97,54,251)] transition ease-in-out rotate-360 duration-1000;
 }

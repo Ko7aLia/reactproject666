@@ -16,6 +16,12 @@ html {
 
 
 
+.custom-box{
+
+  @apply bg-[linear-gradient(rgb(38,_38,_38),_rgb(64,_64,_64))] rounded-[10px] border-[1px] border-[rgb(84,_84,_84)];
+}
+
+
 /*
 
     body{
