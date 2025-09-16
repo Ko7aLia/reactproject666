@@ -122,7 +122,7 @@ function History() {
 
                 }else{
 
-                    if (newPosition >= minPosition - draggableRectStartOrEnd && newPosition <= maxPosition + draggableRectStartOrEnd) {
+                    if (newPosition <= minPosition && newPosition >= maxPosition) {
                         //console.log(newPosition, draggableRect.width, draggableRectStartOrEnd);
                         setPosition(newPosition);
                     };
