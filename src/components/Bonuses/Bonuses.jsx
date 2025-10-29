@@ -1,20 +1,26 @@
-import React from 'react';
-const bonusesData = 10000;
+import React, { createContext, useState} from 'react';
+
+// Создаем контекст
+const BonusesContext = createContext();
+
+// Провайдер для контекста
+const BonusesProvider = ({ children }) => {
+    const [bonusesData, setBonusesData] = useState([10000,2000]);
+
+    
+
+    const updateBonusesData = (newBonus) => {
+        setBonusesData([newBonus, ...bonusesData.slice(1)]);
+    };
+
+    return (
+        <BonusesContext.Provider value={{ bonusesData, updateBonusesData }}>
+            {children}
+        </BonusesContext.Provider>
+    );
 
 
-const Bonuses = () => {
-  
-
-  const bonus = bonusesData;
-  
-
-  return (
-    <div>
-            {/* Используем `toLocaleString` для форматирования числа с пробелами */}
-            <p>{bonus.toLocaleString('ru-RU')}</p>
-          
-    </div>
-  );
+    
 };
 
-export default Bonuses;
+export {BonusesProvider, BonusesContext};

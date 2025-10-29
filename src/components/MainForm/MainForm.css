@@ -26,12 +26,73 @@
   transform: rotate(180deg);
 }
 
-.custom-send-button-hover:hover{
 
-  @apply bg-[rgb(97,54,251)] transition ease-in-out rotate-360 duration-1000;
+
+
+
+@keyframes rotate360-ok {
+
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg); background: rgb(0, 182, 0);
+  }
 }
 
+.custom-send-button-hover-ok {
+  @apply bg-[rgb(97,54,251)] animate-[rotate360-ok_0.7s_ease-in-out_forwards];
+  
+}
 
+@keyframes rotate360-err {
+
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg); background: rgb(182, 0, 0);
+  }
+}
+
+.custom-send-button-hover-err {
+  @apply bg-[rgb(97,54,251)] animate-[rotate360-err_0.7s_ease-in-out_forwards];
+  
+}
+
+@keyframes backgroundColorSuccess {
+
+  from{
+    background: rgb(0, 182, 0); 
+  }
+
+  to {
+    background:rgb(74,41,192);
+  }
+
+}
+
+.custom-send-button-hover-success {
+  @apply animate-[backgroundColorSuccess_0.7s_ease-in-out_forwards];
+  
+}
+
+@keyframes backgroundColorError {
+
+  from{
+    background: rgb(182, 0, 0);
+  }
+
+  to {
+    background:rgb(74,41,192);
+  }
+
+}
+
+.custom-send-button-hover-error {
+  @apply animate-[backgroundColorError_0.7s_ease-in-out_forwards];
+  
+}
 
 /*
     min-h-15 border-1 max-w-30 min-w-25 rounded-xl border-solid border-gray-600 bg-gradient-to-b from-neutral-800 to-neutral-700
