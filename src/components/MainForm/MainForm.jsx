@@ -26,7 +26,12 @@ export function BlocksValueProvider ({children}) {
     const currentTime = new Date();
     const hours = currentTime.getHours();
     const minutes = currentTime.getMinutes();
+    
+
+    const addBlock = (finalSum) => {
     const formattedTime = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`;
+    setBlocks(prevBlocks => [...prevBlocks, {value: finalSum, time: formattedTime }]);
+  };
 
 //!!!!!!!!!!!!!!!!!!
     const [blocks, setBlocks] = useState([]);
@@ -34,8 +39,8 @@ export function BlocksValueProvider ({children}) {
     return (
     <BlocksValueContext.Provider
     value={{ 
-        blocks, setBlocks,
-        formattedTime
+        setBlocks, blocks,
+        addBlock
         }}>
       {children}
     </BlocksValueContext.Provider>
@@ -57,13 +62,13 @@ export function InputValueProvider({ children }) {
 
   ];
 
-  const [finalSum, setFinalSum] = useState('');
+  
   const [selectedOption, setSelectedOption] = useState(options[0]);
 
   return (
     <InputValueContext.Provider 
     value={{ 
-        finalSum, setFinalSum, 
+       
         selectedOption, setSelectedOption
         }}>
       {children}
@@ -72,6 +77,8 @@ export function InputValueProvider({ children }) {
 };
 
 function MainForm() {
+
+
 
   //баланс бонусов
   const {bonusesData} = useContext(BonusesContext);
@@ -100,7 +107,7 @@ function MainForm() {
   const [inputValue, setInputValue] = useState('');
   
   //итоговая сумма
-  const {finalSum, setFinalSum} = useContext(InputValueContext);
+  const [finalSum, setFinalSum] = useState('');
 
   //комиссия
   const [commission, setCommission] = useState('');
@@ -123,6 +130,7 @@ function MainForm() {
     };
 
     
+ const { addBlock } = useContext(BlocksValueContext);
 
     //ввод значений в поле списания бонусов
     const handleChange = (e) => {
@@ -206,6 +214,8 @@ function MainForm() {
             const result = inputValue / rate;
             setFinalSum(result.toFixed(rounding));
 
+            
+
             //расчёт комиссии
             const resultComm = result.toFixed(rounding) / comm;
 
@@ -247,9 +257,6 @@ function MainForm() {
 
 
 
-   
-
-
   
     //незаполненность полей (конкретнее)!!!!!!!!!!!!
   const errors = {
@@ -257,25 +264,31 @@ function MainForm() {
       field2: !field2,
     };
 
-
-
-//!!!!!!!!!!!!!!!!!!
+    //!!!!!!!!!!!!!!!!!
   const {blocks, setBlocks} = useContext(BlocksValueContext);
-    
+  
+
     //для кнопки отправки данных, когда поля заполнены
   const handleButtonClick = (e) => {
 
     //убирает стандартную реакцию браузера на перезагрузку после нажатия кнопки
     e.preventDefault();
+
     
-        if (!errors.field1 && !errors.field2){
+        if (!errors.field1 && !errors.field2 && inputValue != 0){
         
-        
-          // Добавить новый блок с введённым значением в список истории
-          setBlocks([...blocks, finalSum]);
-        
+          
+          // Добавить новый блок с финальной выплатой в список истории
+          addBlock(finalSum);
+
           // списывает бонусы с баланса
-          updateBonusesData(bonusesData[0] - inputValue);
+          if(inputValue > bonusesData[0]){
+
+              setInputValue(bonusesData[0]);
+
+          }else{
+          
+              updateBonusesData(bonusesData[0] - inputValue);}
 
         };
 
@@ -291,7 +304,7 @@ function MainForm() {
       setFieldErrors(errors);
 
           //проверка на незаполненность полей и применение соответствующих стилей для начала анимации
-        if (errors.field1 || errors.field2) {
+        if (errors.field1 || errors.field2 || inputValue == 0) {
 
           setButtonAnimErr(true);
           setButtonAnimError(false);
@@ -318,7 +331,7 @@ function MainForm() {
   const handleAnimationEnd = () => {
 
         //проверка на незаполненность полей и применение соответсвующих стилей для окончания анимации
-      if(errors.field1 || errors.field2) {
+      if(errors.field1 || errors.field2 && inputValue != 0) {
       
         setButtonAnimErr(false);
         setButtonAnimError(true);

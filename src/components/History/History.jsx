@@ -5,11 +5,15 @@ import waiting from '../../assets/waiting.svg';
 import HistoryBoxes from './HistoryBoxes.jsx';
 
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
 
 import DragSvgLock from '../../components/DragSvgLock/DragSvgLock.jsx'
 
+import { BlocksValueContext } from '../../components/MainForm/MainForm.jsx';
+
 function History() {
+    //!!!!!!!!!!!!
+    const {blocks, setBlocks} = useContext(BlocksValueContext);
 
     const [position, setPosition] = useState(0);
 
@@ -21,46 +25,68 @@ function History() {
     const parentRef = useRef(null);
     const draggableRef = useRef(null);
 
-    //состояние для определения перемещались ли блоки истории для определения центрального положения
+    const [draggableRectWidth, setDraggableRectWidth] = useState(false);
+
+    //состояние для определения изменения размеров окна браузера для определения начального/центрального положения блоков истории
     const [hasBeenDragged, setHasBeenDragged] = useState(false);
 
-    ////центральная позиция перетаскиваемого элемента внутри родительского
+
+
+    //центральная позиция перетаскиваемого элемента внутри родительского
     const calculateInitialPosition = () => {
 
-        // Проверяем, не перемещался ли элемент
-        if (!hasBeenDragged) { 
+            //получить размер элементов истории операций и их положение относительно viewport
+                        const draggableRect = draggableRef.current.getBoundingClientRect();
 
-            if (window.innerWidth > 800) { 
+            console.log("calculate отработал");
+        
+                //необходимо делать выравнивание элементов по ширине до тех пор, пока размер окна браузера более 800px и при этом размер блоков истории не превышает размер видимой области окна браузера
+                if (window.innerWidth > 800 && draggableRect.width <= window.innerWidth) { 
 
-                if (parentRef.current && draggableRef.current) {
+                    if (parentRef.current && draggableRef.current) {
 
-                    //ширина родительского элемента где находятся блоки истории
-                    const parentWidth = parentRef.current.clientWidth;
+                        //ширина родительского элемента где находятся блоки истории
+                        const parentWidth = parentRef.current.clientWidth;
 
+                        
 
-                    const draggableWidth = draggableRef.current.clientWidth;
-                    const initialPosition = (parentWidth - 220)/2;
-                    
-                    setPosition(initialPosition);
+                        const draggableWidth = draggableRef.current.clientWidth;
+                        const initialPosition = (parentWidth - draggableWidth)/2;
+
+                        setPosition(initialPosition);
+
+                        setDraggableRectWidth(draggableRect.width);
+
+                        console.log(draggableRectWidth);
+
+                    };
+
+                } else {
+
+                    setPosition(0); // На мобильных устройствах начинает с позиции 0
+
                 };
-
-            } else {
-
-                setPosition(0); // На мобильных устройствах начинает с позиции 0
-
-            };
-        };
+        
     };
     
-    // выравнивание блока истории по мере уменьшения окна
-    useEffect(() => {
-        calculateInitialPosition();
-        window.addEventListener('resize', calculateInitialPosition); 
+    
+    const[dragWidth, setDragWidth] = useState(0);
 
-        return () => {
-            window.removeEventListener('resize', calculateInitialPosition);
-        };
-    }, [hasBeenDragged]); // Обновляйте эффект при изменении вашего нового состояния
+    // выравнивание блока истории по мере уменьшения окна
+   useEffect(() => {
+
+       console.log("useEffect отработал");
+           
+           calculateInitialPosition();
+        
+           window.addEventListener('resize', calculateInitialPosition); 
+
+
+               return () => {
+                  window.removeEventListener('resize', calculateInitialPosition);
+              };
+       
+   }, [blocks]); // Обновляет эффект при изменении количества блоков историй операций
 
 
     //отслеживание изменения позиции курсора, установка перетаскивания
@@ -77,7 +103,12 @@ function History() {
         setDragging(true);
     };
 
-    //движение блока истории внутри родительского блока
+
+
+
+
+
+    //движение блока истории внутри родительского блока ДЛЯ МЫШИ
     const handleMouseMove = (event) => {
         if (dragging) {
 
@@ -92,6 +123,9 @@ function History() {
                 //получить размер элементов истории операций и их положение относительно viewport
                 const draggableRect = draggableRef.current.getBoundingClientRect();
 
+                console.log(draggableRect.width);
+                setDragWidth(draggableRect.width);
+                console.log(dragWidth);
                 
                 // Ограничение перемещения div в пределах родителя
                 const minPosition = 0;
@@ -126,7 +160,8 @@ function History() {
             };
         };
     };
-
+    
+    //движение блока истории внутри родительского блока ДЛЯ ТАЧСКРИНА
     const handleTouchMove = (event) => {
         if (dragging) {
             const touch = event.touches[0];
@@ -171,6 +206,7 @@ function History() {
             
         }
     };
+
 
     // остановка расчета позиции блока истории относительно курсора
     const handleMouseUp = () => {

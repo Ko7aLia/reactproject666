@@ -13,16 +13,21 @@ const HistoryBoxes = () => {
 
 const {blocks, setBlocks} = useContext(BlocksValueContext);
 
+
+
 const {formattedTime} = useContext(BlocksValueContext);
 
 const {finalSum, setFinalSum} = useContext(InputValueContext);
 
 const {selectedOption, setSelectedOption} = useContext(InputValueContext);
+
     
+
     return (
         <>
 
                 <div className="flex flex-row gap-x-3">
+                    
                     {blocks.map((block, index) => (
                       <div key={index} className="custom-box h-[118px] w-[220px] p-[12px]">
 
@@ -39,7 +44,7 @@ const {selectedOption, setSelectedOption} = useContext(InputValueContext);
 
                     <div className="flex gap-[4px] h-[20px]"> 
 
-                        <p className="font-bold text-[16px]"></p>{block}<p className="mt-[6px] font-normal text-[10px] opacity-[40%]" >{selectedOption.value}</p>
+                        <p className="font-bold text-[16px]"></p>{block.value}<p className="mt-[6px] font-normal text-[10px] opacity-[40%]" >{selectedOption.value}</p>
                     
                     </div>
 
@@ -52,7 +57,7 @@ const {selectedOption, setSelectedOption} = useContext(InputValueContext);
 
             <div className="flex gap-[8px] items-center mt-[10px] h-[20px] w-[196px]">
                 
-                <div className="flex custom-box items-center justify-center ml-[5px] h-[23px] w-[35px]"><p className="font-normal text-[10px]">{formattedTime}</p></div> <p className="font-normal text-[10px] text-[rgb(255,_187,_0)]">Ожидает отправки</p>
+                <div className="flex custom-box items-center justify-center ml-[5px] h-[23px] w-[35px]"><p className="font-normal text-[10px]">{block.time}</p></div> <p className="font-normal text-[10px] text-[rgb(255,_187,_0)]">Ожидает отправки</p>
                 
             </div>
                         
